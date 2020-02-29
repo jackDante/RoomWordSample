@@ -7,5 +7,8 @@ a complete basic app that implements the recommended architecture and can be use
 1. https://stackoverflow.com/questions/57670510/how-to-get-rid-of-incremental-annotation-processing-requested-warning
 1. inside manifest add this android:theme="@style/Theme.AppCompat">
 
+## Important links
+https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html
+
 ## License
 Copyright 2017 Google, Inc.
