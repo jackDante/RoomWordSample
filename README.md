@@ -10,5 +10,8 @@ a complete basic app that implements the recommended architecture and can be use
 ## Important links
 https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html
 
+## App structure
+![App structure](https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/img/1205d9f95688b35b.png)
+
 ## License
 Copyright 2017 Google, Inc.
