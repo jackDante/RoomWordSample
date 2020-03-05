@@ -17,11 +17,19 @@
         android:textSize="18sp" />
 
     <Button
-        android:id="@+id/button_update"
+    android:id="@+id/button_update"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:text="@string/update"
+    android:textColor="@color/buttonLabel" />
+    <Button
+        android:id="@+id/button_delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="@string/button_save"
+        android:background="@color/colorAccent"
+        android:text="@string/delete"
         android:textColor="@color/buttonLabel" />
 
 </LinearLayout>
+

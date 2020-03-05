@@ -2,20 +2,21 @@ package edu.self.roomwordsample
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var wordViewModel: WordViewModel
     private val newWordActivityRequestCode = 1
+    private val deleteWordActivityRequestCode = 2
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,12 +29,16 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        //to WordListAdapter (jack)
+        adapter.setviewModelStoreOwner(this)
+
         //get a ViewModel from the ViewModelProvider
         wordViewModel = ViewModelProvider(this).get(WordViewModel::class.java)
         wordViewModel.allWords.observe(this, Observer { words ->
             // Update the cached copy of the words in the adapter.
             words?.let { adapter.setWords(it) }
         })
+
 
         //When you add a word to the database in NewWordActivity, the UI will automatically update.
         val fab = findViewById<FloatingActionButton>(R.id.fab)
@@ -42,14 +47,15 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, newWordActivityRequestCode)
         }
 
-        /*
-        val task = findViewById<TextView>(R.id.textView)
-        val word = task.text.toString()
-        task.setOnLongClickListener() {
-            wordViewModel.delete(word)
-        }
-         */
+
     }
+
+    fun delTask(word: Word){
+        wordViewModel.delete(word)
+    }
+
+
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -65,7 +71,16 @@ class MainActivity : AppCompatActivity() {
                 R.string.empty_not_saved,
                 Toast.LENGTH_LONG).show()
         }
+        if(requestCode == deleteWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
+            data?.getStringExtra(UpdateWordActivity.EXTRA_REPLY)?.let {
+                val word = Word(it)
+                wordViewModel.delete(word)
+            }
+        }
+
     }
 
 
 }
+
+

@@ -8,13 +8,13 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 
-class NewWordActivity : AppCompatActivity() {
+class UpdateWordActivity : AppCompatActivity() {
 
     private lateinit var editWordView: EditText
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_new_word)
+        setContentView(R.layout.activity_update_word)
         editWordView = findViewById(R.id.edit_word)
 
         val button = findViewById<Button>(R.id.button_update)
