@@ -1,4 +1,4 @@
-# RoomWordSample in Kotlin
+# RoomWordSample (ToDoList) in Kotlin
 ## Intro
 This sample shows how to use the libraries to build 
 a complete basic app that implements the recommended architecture and can be used as a template for further explorations.
